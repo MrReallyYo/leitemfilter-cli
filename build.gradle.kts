@@ -24,7 +24,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
     implementation("org.slf4j:slf4j-simple:2.0.6")
 
-    implementation("com.github.mrreallyyo:leitemfilter-api:1.2")
+    implementation("com.github.mrreallyyo:leitemfilter-api:1.4")
 
 
     testImplementation(kotlin("test"))

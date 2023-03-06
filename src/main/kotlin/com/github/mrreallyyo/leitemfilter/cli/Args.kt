@@ -18,5 +18,4 @@ class Args(args: Array<String>) {
         parser.useDefaultHelpShortName = false
         parser.parse(args)
     }
-
 }

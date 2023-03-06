@@ -21,7 +21,7 @@ fun main(arguments: Array<String>) {
             name += ".xml"
         }
         File(name).inputStream().use {
-            ItemFilter.load(it)
+            ItemFilter.load(it).apply { fileName = name }
         }
     }
 
