@@ -1,5 +1,11 @@
 # Last Epoch Item Filter CLI
 
+Its currently intended to simplify strict filtering of different bases with affixes.
+Affix rules will be combined with bases rules and generate new combined rules.
+
+Named rules and rules with multiple conditions are kept.
+
+Also supports merging of multiple filter files and recoloring of secondary filter rules.
 This may or not be something useful for the multiplayer patch.
 
 TL;DR: I am trying to figure out how to make a proper filter for me and my friends.
