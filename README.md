@@ -7,7 +7,7 @@ TL;DR: I am trying to figure out how to make a proper filter for me and my frien
 
 
 # Usage
-> java -jar leitemfilter-cli-*.*.jar -cf player1,player2-o multiplayer
+> java -jar leitemfilter-cli-*.*.jar -cf player1,player2 -o multiplayer
 
 *Example filters and the result can be found under releases*
 
