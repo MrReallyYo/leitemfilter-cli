@@ -41,7 +41,6 @@ fun main(arguments: Array<String>) {
         ruleLimit = args.ruleLimt
     )
 
-
     val merged = ItemFilterMerger(opts).mergeFilter()
 
     var output = args.output
