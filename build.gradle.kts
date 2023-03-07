@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.mrreallyyo"
-version = "1.3"
+version = "1.4"
 
 repositories {
     mavenCentral()
@@ -24,7 +24,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
     implementation("org.slf4j:slf4j-simple:2.0.6")
 
-    implementation("com.github.mrreallyyo:leitemfilter-api:1.8")
+    implementation("com.github.mrreallyyo:leitemfilter-api:1.11")
 
     testImplementation(kotlin("test"))
 }
