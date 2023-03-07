@@ -33,7 +33,7 @@ TL;DR: I am trying to figure out how to make a proper filter for me and my frien
 # Example
 
 **Input**
-> Filters (e.g. your own and of another player once multiplayer hits) that contain some static rules and rules for affixes and bases.
+> Filters (e.g. your own (player1) and of another player (player2)) that contain some static rules and rules for affixes and bases.
 <img src="images/player1.png?raw=true" width="512">
 <img src="images/player2.png?raw=true" width="512">
 
