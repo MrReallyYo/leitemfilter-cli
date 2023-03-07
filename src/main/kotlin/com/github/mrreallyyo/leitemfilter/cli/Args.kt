@@ -18,26 +18,42 @@ class Args(args: Array<String>) {
     val output by parser.option(ArgType.String, shortName = "o", description = "The generated output filter file")
         .required()
 
-    val generateRules by parser.option(ArgType.Boolean, "gr", "Generate rules with the affixes/bases scheme.")
-        .default(MergerOptions.defaultGenerateRules)
+    val skipRuleGeneration by parser.option(
+        ArgType.Boolean,
+        shortName = "sr",
+        description = "Skips generation of rules based affixes/bases scheme."
+    )
+        .default(!MergerOptions.defaultGenerateRules)
 
     val header by parser.option(
         ArgType.String,
         shortName = "h",
         description = "A header file containing rules like showing all uniques. A default is included and will be used by default."
     )
-    val skipHeader by parser.option(ArgType.Boolean, "sh", "Skip header rules.")
+    val skipHeader by parser.option(
+        ArgType.Boolean,
+        shortName = "sh",
+        description = "Skip header rules."
+    )
         .default(!MergerOptions.defaultUseEmbeddedHeader)
     val footer by parser.option(
         ArgType.String,
         shortName = "f",
         description = "A footer file containing rules like hiding all items. A default is included and will be used by default."
     )
-    val skipFooter by parser.option(ArgType.Boolean, "sf", "Skip footer rules.")
+    val skipFooter by parser.option(
+        ArgType.Boolean,
+        shortName = "sf",
+        description = "Skip footer rules."
+    )
         .default(!MergerOptions.defaultUseEmbeddedFooter)
 
-    val overrideColors by parser.option(ArgType.Boolean, "or", "Override filter colors from secondary filters")
-        .default(MergerOptions.defaultOverrideColors)
+    val skipColors by parser.option(
+        ArgType.Boolean,
+        shortName = "or",
+        description = "Skips override of colors from secondary filters."
+    )
+        .default(!MergerOptions.defaultOverrideColors)
     val colors by parser.option(
         ArgType.String,
         shortName = "c",

@@ -35,9 +35,9 @@ fun main(arguments: Array<String>) {
         footer = footer,
         useEmbeddedFooter =  !args.skipFooter,
         baseFilters = baseFilters,
-        generateRules = args.generateRules,
+        generateRules = !args.skipRuleGeneration,
         multiplayerColors = colors,
-        overrideColors = args.overrideColors,
+        overrideColors = !args.skipColors,
         ruleLimit = args.ruleLimt
     )
 
