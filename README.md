@@ -40,4 +40,4 @@ TL;DR: I am trying to figure out how to make a proper filter for me and my frien
 **Output**
 > Generates a filter with all static rules and combines affix/base rules for strict filtering of items.
 > Secondary filters will be recolored to a single color.
-<img src="images/merge1.png?raw=true" width="512">
+<img src="images/merge.png?raw=true" width="512">
