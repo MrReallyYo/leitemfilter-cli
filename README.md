@@ -30,7 +30,7 @@ TL;DR: I am trying to figure out how to make a proper filter for me and my frien
     --help -> Usage info
 ```
 
-# Example 
+# Example (outdated)
 
 **Input**
 > Filters (e.g. your own and of another player once multiplayer hits) that contain some static rules and rules for affixes and bases.
@@ -41,5 +41,3 @@ TL;DR: I am trying to figure out how to make a proper filter for me and my frien
 > Generates a filter with all static rules and combines affix/base rules for strict filtering of items.
 > Secondary filters will be recolored to a single color.
 <img src="images/merge1.png?raw=true" width="512">
-<img src="images/merge2.png?raw=true" width="512">
-<img src="images/merge3.png?raw=true" width="512">
