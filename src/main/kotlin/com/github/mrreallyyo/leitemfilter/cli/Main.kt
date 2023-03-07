@@ -1,35 +1,48 @@
 package com.github.mrreallyyo.leitemfilter.cli
 
 import com.github.mrreallyyo.api.ItemFilterMerger
+import com.github.mrreallyyo.api.MergerOptions
 import com.github.mrreallyyo.api.definitions.ItemFilter
 import java.io.File
 
+
+private fun loadFilter(name: String?): ItemFilter? {
+    if (name == null) return null
+    var name = name
+    if (!name.endsWith(".xml")) {
+        name += ".xml"
+    }
+    val file = File(name)
+    return file.inputStream().use {
+        ItemFilter.load(it).apply { fileName = file.nameWithoutExtension }
+    }
+}
 
 fun main(arguments: Array<String>) {
 
     val args = Args(arguments)
 
-    //val header = LootFilterAccess.loadFilter(args.header ?: "_header", args.header == null)
-    // val footer = LootFilterAccess.loadFilter(args.footer ?: "_footer", args.footer == null)
-
-
-    val colors = args.secondaryColors?.split(",")?.map { it.toInt() }?.filter { it in 0..17 } ?: listOf(17, 14, 12)
-
-    val compactFilters = args.compactFilters.split(",").map {
-        var name = it
-        if (!name.endsWith(".xml")) {
-            name += ".xml"
-        }
-        File(name).inputStream().use {
-            ItemFilter.load(it).apply { fileName = name }
-        }
+    val header = loadFilter(args.header)
+    val footer = loadFilter(args.footer)
+    val colors = args.colors.split(",").map { it.toInt() }.filter { it in 0..17 }
+    val baseFilters = args.baseFilters.split(",").mapNotNull {
+        loadFilter(it)
     }
 
-
-    val merged = ItemFilterMerger.mergeFilter(
-        compactFilters,
-        colors
+    val opts = MergerOptions(
+        header = header,
+        useEmbeddedHeader = !args.skipHeader,
+        footer = footer,
+        useEmbeddedFooter =  !args.skipFooter,
+        baseFilters = baseFilters,
+        generateRules = args.generateRules,
+        multiplayerColors = colors,
+        overrideColors = args.overrideColors,
+        ruleLimit = args.ruleLimt
     )
+
+
+    val merged = ItemFilterMerger(opts).mergeFilter()
 
     var output = args.output
     if (!output.endsWith(".xml")) {

@@ -1,18 +1,54 @@
 package com.github.mrreallyyo.leitemfilter.cli
 
+import com.github.mrreallyyo.api.MergerOptions
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
+import kotlinx.cli.default
 import kotlinx.cli.required
 
 class Args(args: Array<String>) {
 
     val parser = ArgParser("leitemfilter")
 
-    val compactFilters by parser.option(ArgType.String, shortName = "cf", description = "Compact filter containing the affixes, bases and extra named rules. Can contain multiple files separated by \",\".").required()
-    val output by parser.option(ArgType.String, shortName = "o", description = "Output file").required()
-    val secondaryColors by parser.option(ArgType.String, shortName = "sc", description = "Overwrites the colors of secondary filters with the given color/colors. Can contain multiple colors separated by \",\".")
-    val header by parser.option(ArgType.String, shortName = "h", description = "Header file")
-    val footer by parser.option(ArgType.String, shortName = "f", description = "Footer file")
+    val baseFilters by parser.option(
+        ArgType.String,
+        shortName = "b",
+        description = "The base filter to work with. Can contain multiple files separated by\",\" e.g. for multiplayer."
+    ).required()
+    val output by parser.option(ArgType.String, shortName = "o", description = "The generated output filter file")
+        .required()
+
+    val generateRules by parser.option(ArgType.Boolean, "gr", "Generate rules with the affixes/bases scheme.")
+        .default(MergerOptions.defaultGenerateRules)
+
+    val header by parser.option(
+        ArgType.String,
+        shortName = "h",
+        description = "A header file containing rules like showing all uniques. A default is included and will be used by default."
+    )
+    val skipHeader by parser.option(ArgType.Boolean, "sh", "Skip header rules.")
+        .default(!MergerOptions.defaultUseEmbeddedHeader)
+    val footer by parser.option(
+        ArgType.String,
+        shortName = "f",
+        description = "A footer file containing rules like hiding all items. A default is included and will be used by default."
+    )
+    val skipFooter by parser.option(ArgType.Boolean, "sf", "Skip footer rules.")
+        .default(!MergerOptions.defaultUseEmbeddedFooter)
+
+    val overrideColors by parser.option(ArgType.Boolean, "or", "Override filter colors from secondary filters")
+        .default(MergerOptions.defaultOverrideColors)
+    val colors by parser.option(
+        ArgType.String,
+        shortName = "c",
+        description = "The colors of secondary filters with the given color/colors. Can contain multiple colors separated by \",\"."
+    ).default(MergerOptions.defaultMultiplayerColors.joinToString(","))
+
+    val ruleLimt by parser.option(
+        ArgType.Int,
+        shortName = "r",
+        description = "The limit of rules for the final filter."
+    ).default(MergerOptions.defaultRuleLimit)
 
     init {
         parser.useDefaultHelpShortName = false
