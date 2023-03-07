@@ -30,7 +30,7 @@ TL;DR: I am trying to figure out how to make a proper filter for me and my frien
     --help -> Usage info
 ```
 
-# Example (outdated)
+# Example
 
 **Input**
 > Filters (e.g. your own and of another player once multiplayer hits) that contain some static rules and rules for affixes and bases.
